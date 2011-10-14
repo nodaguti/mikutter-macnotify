@@ -1,0 +1,11 @@
+Macのruby-growlがいまいち使いにくかったので
+Grwolnotifyを利用したぷらぐいんにしてみた
+
+* 必須いんすとーる
+Grwol
+growlnotify
+
+* 設定
+growlnotifyをインストールしてくださいあとは
+pluginがロードされる場所にmacnotify.rbを
+置いてください
