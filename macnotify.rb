@@ -5,6 +5,10 @@ Plugin.create(:growlnotify) do
     u = "@#{user[:idname]} (#{user[:name]})" if user
     img = user[:profile_image_url]
     i = Gtk::WebIcon.get_filename(img)
+    Thread.new{
+      system 'say', user[:idname]
+    }
     system 'growlnotify', '-t', u, '-m', text, '--image', i
+    stop.call
   end
 end
