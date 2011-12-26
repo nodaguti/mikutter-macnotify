@@ -3,12 +3,10 @@ Plugin.create(:growlnotify) do
     text = text.to_show if text.is_a? Message
     u = "mikumiku"
     u = "@#{user[:idname]} (#{user[:name]})" if user
-    img = user[:profile_image_url]
-    i = Gtk::WebIcon.get_filename(img)
-    Thread.new{
-      system 'say', user[:idname]
-    }
-    system 'growlnotify', '-t', u, '-m', text, '--image', i
+    url = user[:profile_image_url]
+    img = Gdk::WebImageLoader.local_path(url)
+    Thread.new{system 'say', user[:idname]}
+    system 'growlnotify', '-t', u, '-m', text, '--image', img
     stop.call
   end
 end
