@@ -5,8 +5,8 @@ Plugin.create(:growlnotify) do
     u = "@#{user[:idname]} (#{user[:name]})" if user
     url = user[:profile_image_url]
     img = Gdk::WebImageLoader.local_path(url)
-    Thread.new{system 'say', user[:idname]}
-    system 'growlnotify', '-t', u, '-m', text, '--image', img
+    command = "echo 'display notification \"#{text.to_s}\" with title \"mikutter\" subtitle \"#{u}\"' | osascript"
+    system command
     stop.call
   end
 end
