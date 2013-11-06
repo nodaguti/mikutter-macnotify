@@ -1,11 +1,5 @@
-Macのruby-growlがいまいち使いにくかったので
-Grwolnotifyを利用したぷらぐいんにしてみた
-
-* 必須いんすとーる
-Grwol
-growlnotify
+OS X Marvericksから通知センターがユーザから利用できるようになったので通知センターを利用した通知プラグインです
 
 * 設定
-growlnotifyをインストールしてくださいあとは
 pluginがロードされる場所にmacnotify.rbを
 置いてください
