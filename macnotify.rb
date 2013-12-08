@@ -1,12 +1,22 @@
-Plugin.create(:growlnotify) do
+require "terminal-notifier"
+
+Plugin.create(:macnotify) do
   on_popup_notify do |user, text, &stop|
-    text = text.to_show if text.is_a? Message
+    text = if text.is_a? Message
+      text.to_show
+    else
+      '' unless test.is_a? String
+    end
+    
     u = "mikumiku"
     u = "@#{user[:idname]} (#{user[:name]})" if user
-    url = user[:profile_image_url]
-    img = Gdk::WebImageLoader.local_path(url)
-    command = "echo 'display notification \"#{text.to_s}\" with title \"mikutter\" subtitle \"#{u}\"' | osascript"
-    system command
+
+    text = text.encode(Encoding::UTF_8)
+    u = u.encode(Encoding::UTF_8)
+
+    if text.valid_encoding? && u.valid_encoding?
+      TerminalNotifier.notify(text, :title=>u, :sender=>'org.macosforge.xquartz.X11')
+    end
     stop.call
   end
 end

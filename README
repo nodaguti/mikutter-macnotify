@@ -1,5 +1,8 @@
-OS X Marvericksから通知センターがユーザから利用できるようになったので通知センターを利用した通知プラグインです
+以前の重大なセキュリティ・ホールがあったので修正しました
+
+thanks
+@intbatt
+http://twitter.com/intbatt/status/409151401625792512
 
 * 設定
-pluginがロードされる場所にmacnotify.rbを
-置いてください
+pluginの場所にディレクトリごとおいてください
