@@ -3,6 +3,11 @@ require '/Library/Ruby/Gems/2.0.0/gems/terminal-notifier-1.6.0/lib/terminal-noti
 Plugin.create :macnotify do
     on_appear do |ms|
         ms.each do |m|
+
+            if Time.now - m[:created] > 5
+                next
+            end
+
             text = m.message.to_show
             user = "mikumiku"
             user = "@#{m.message.user[:idname]} (#{m.message.user[:name]})" if m.message.user
