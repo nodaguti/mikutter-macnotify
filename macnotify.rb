@@ -15,8 +15,11 @@ Plugin.create :macnotify do
             text = text.encode(Encoding::UTF_8)
             user = user.encode(Encoding::UTF_8)
 
+            url = m.message.user[:profile_image_url]
+            img = Gdk::WebImageLoader.local_path(url)
+
             if text.valid_encoding? && user.valid_encoding?
-                TerminalNotifier.notify(text, :title=>user, :sender=>'org.macosforge.xquartz.X11')
+                TerminalNotifier.notify(text, :title=>user, :appIcon=>img, :sender=>'org.macosforge.xquartz.X11')
             end
         end
     end
